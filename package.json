@@ -1,0 +1,23 @@
+{
+  "name": "billgenerator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 8989",
+    "build": "next build",
+    "start": "next start -p 8989",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.11",
+    "next": "13.5.7",
+    "number-to-words": "^1.2.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "sass": "^1.79.4"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "13.5.7"
+  }
+}

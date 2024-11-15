@@ -1,0 +1,70 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$SpaceBetween : space-between;
+$Column : column;
+
+.HowWorksBox{
+  display: $InlineFlex;
+  align-items: $Center;
+  width: $S100;
+  justify-content: $SpaceBetween;
+  background: #eeeeee;
+  .SectionHeading{
+    font-family: "Anton", sans-serif;
+  }
+  .HowWorksText{
+    width: calc($S100 - 360px);
+    padding: 20px;
+    .List{
+      width: $S100;
+      display: inline-grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap:20px;
+      flex-direction: $Column;
+      .Item{
+        display: $InlineFlex;
+        align-items: $FlexStart;
+        justify-content: $FlexStart;
+        text-align: left;
+      }
+      .ItemIcon{
+        display: $InlineFlex;
+        align-items: $Center;
+        justify-content: $Center;
+        font-size: 40px;
+        font-family: "Anton", sans-serif;
+        background: #ffffff;
+        border-radius: $S100;
+        height: 60px;
+        width: 60px;
+        flex: none;
+      }
+      .ItemText{
+        line-height: 1.5;
+      }
+    }
+  }
+  .HowWorksImage{
+    flex: 1 1 360px;
+    display: $InlineFlex;
+    align-items: $FlexStart;
+    justify-content: $FlexStart;
+    position: $Relative;
+    height: 360px;
+    .Image{
+        width: 360px;
+        height: 360px;
+        object-fit: contain;
+        position: $Absolute;
+        bottom: -18px;
+    }
+  }
+}
+
+

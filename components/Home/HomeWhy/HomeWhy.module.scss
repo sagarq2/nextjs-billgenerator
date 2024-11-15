@@ -1,0 +1,78 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$SpaceBetween : space-between;
+$Column : column;
+
+
+.SectionHeading{
+  font-family: "Anton", sans-serif;
+}
+
+
+
+
+
+
+
+.WhyBox{
+  display: $InlineFlex;
+  align-items: $Center;
+  width: $S100;
+  justify-content: $SpaceBetween;
+  background: #eeeeee;
+  padding: 20px;
+  .SectionHeading{
+    font-family: "Anton", sans-serif;
+  }
+  .WhyText{
+    width: calc($S100 - 600px);
+    .List{
+      width: $S100;
+      display: inline-grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap:20px;
+      .Item{
+        border: 1px solid #eeeeee;
+        border-radius: 10px;
+        display: $InlineFlex;
+        align-items: $Center;
+        justify-content: $FlexStart;
+        text-align: $Center;
+        padding:20px;
+        flex-direction: $Column;
+        background: #ffffff;
+      }
+      .ItemIcon{
+        font-size: 60px;
+      }
+      .ItemText{
+        line-height: 1.5;
+      }
+    }
+  }
+  .WhyImage{
+    flex: 1 1 600px;
+    display: $InlineFlex;
+    align-items: $FlexStart;
+    justify-content: $FlexStart;
+    padding:0 20px;
+    position: $Relative;
+    height: 600px;
+  
+    .Image{
+        width: 600px;
+        height: 600px;
+        object-fit: contain;
+        position: $Absolute;
+        bottom: -32px;
+    }
+  }
+}
+
+

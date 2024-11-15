@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
+
+// @import 'variables.scss';
+// @import 'mixins.scss';
+@import 'predefine.scss';
+// @import 'check_radio.scss';
+
+
+* {
+  box-sizing: border-box;
+  outline: medium none;
+  text-decoration: none
+}
+
+img {
+  max-width: 100%;
+  border: 0;
+  vertical-align: middle
+}
+
+a {
+  text-decoration: none;
+  border: 0;
+  outline: none;
+  cursor: pointer
+}
+
+a:hover,
+a:active,
+a:visited,
+a:focus {
+  text-decoration: none;
+  outline: 0 none
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: none
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
+  background: #CCC;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased
+}
+
+hr {
+  border: none
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  text-rendering: optimizeSpeed;
+  font-family: "Outfit", sans-serif;
+  -webkit-tap-highlight-color: transparent
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
+select::-ms-expand {
+  display: none
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+p {
+  margin: 0 0 10px
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  margin: 0;
+  padding: 0
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block
+}
+
+input::-ms-clear {
+  width: 0;
+  height: 0
+}

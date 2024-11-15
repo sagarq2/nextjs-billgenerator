@@ -1,0 +1,74 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$SpaceBetween : space-between;
+$Column : column;
+
+
+.AdvantagesBox{
+    display: $InlineFlex;
+    align-items: $Center;
+    width: $S100;
+    justify-content: $SpaceBetween;
+    .SectionHeading{
+      font-family: "Anton", sans-serif;
+    }
+    .AdvantagesText{
+      width: calc($S100 - 420px);
+      padding:20px;
+      .List{
+        width: $S100;
+        display: inline-grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap:15px;
+        .Item{
+          display: $InlineFlex;
+          align-items: $Center;
+          justify-content: $FlexStart;
+        }
+        .ItemIcon{
+          font-size: 30px;
+          background-color: #eeeeee;
+          border: 1px solid #eeeeee;
+          border-radius: 10px;
+          height: 60px;
+          width: 60px;
+          display: $InlineFlex;
+          align-items: $Center;
+          justify-content: $Center;
+          text-emphasis: $Center;
+          flex:none
+        }
+        .ItemText{
+          line-height: 1.25;
+          padding-left: 20px;
+        }
+      }
+    }
+    .AdvantagesImage{
+      flex: 1 1 415px;
+      display: $InlineFlex;
+      align-items: $FlexStart;
+      justify-content: $FlexStart;
+      padding:0 20px;
+      position: $Relative;
+      height: 415px;
+    
+      .Image{
+          width: 415px;
+          height: 415px;
+          object-fit: contain;
+          position: $Absolute;
+          bottom: -16px;
+          left: 0px;
+      }
+    }
+}
+
+
+

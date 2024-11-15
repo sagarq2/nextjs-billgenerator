@@ -1,0 +1,111 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$SpaceBetween : space-between;
+$Column : column;
+
+
+
+.TryNowBox{
+  display: $InlineFlex;
+  width: $S100;
+  justify-content: $SpaceBetween;
+  padding: 20px;
+  .SectionHeading{
+    font-family: "Anton", sans-serif;
+  }
+  .TryNowText{
+    width: calc($S100 - 400px);
+    .TryNowTabbox{
+      width: $S100;
+      display: $InlineFlex;
+      align-items: $FlexStart;
+      justify-content: $FlexStart;
+      background: #eeeeee;
+      border-radius: 10px;
+      .TryNowTab{
+        width: 257px;
+        max-height: 361px;
+        overflow-y: auto;
+        border-radius: 10px;
+
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+          background: rgba(0,0,0,0.09);
+          border-radius: 12px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: rgba(0,0,0,0.2);
+          cursor: pointer;
+          border-radius: 12px;
+          &:hover {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+          }
+        }
+        .TryNowTabList{
+          width: $S100;
+          display: inline-grid;
+          grid-template-columns: repeat(1, 1fr);
+          border: 1px solid #eeeeee;
+          overflow: hidden;
+
+          .TryNowTabItem{
+            border-bottom: 1px solid #ffffff;
+            display: $InlineFlex;
+            justify-content: $Center;
+            flex-direction: $Column;
+            min-height: 60px;
+            padding: 0 10px;
+            &:last-child{
+              border-bottom: none;
+            }
+            &.Active{
+              background: #00ADB5;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+      .TryNowTabContant{
+        width: calc($S100 - 257px);
+        padding:0 20px;
+        .TryNowTabPannel{
+          width: 100%;
+          border: 1px solid #eeeeee;
+          padding: 20px;
+          border-radius: 10px;
+          line-height: 1.75;
+        }
+      }
+    }
+     
+  }
+  .TryNowImage{
+    flex: 1 1 380px;
+    display: $InlineFlex;
+    align-items: $FlexStart;
+    justify-content: $FlexStart;
+    padding:0 20px;
+    position: $Relative;
+    height: 420px;
+  
+    .Image{
+        width: 420px;
+        height: 420px;
+        object-fit: contain;
+        position: $Absolute;
+        bottom: -44px;
+        left: -20px;
+    }
+  }
+}
+
+

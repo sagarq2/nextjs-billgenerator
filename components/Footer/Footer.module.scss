@@ -1,0 +1,17 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+
+
+.Footer{
+    display: $InlineFlex;
+    width: $S100;
+    align-items: $Center;
+    padding: 20px;
+    border-top: 1px solid #eeeeee;
+}

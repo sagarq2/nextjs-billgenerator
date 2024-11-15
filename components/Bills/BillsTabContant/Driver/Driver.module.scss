@@ -1,0 +1,21 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$SpaceBetween : space-between;
+$Column : column;
+
+
+.DriverPage{
+	display: $InlineFlex;
+	align-items: $Center;
+	justify-content: $Center;
+	width: $S100;
+	flex-direction: $Column;
+	text-align: $Center;
+	min-height: calc(100vh - 139px);
+}

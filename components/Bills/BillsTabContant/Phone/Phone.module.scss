@@ -1,0 +1,363 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$SpaceBetween : space-between;
+$Column : column;
+
+.PhonePage {
+	padding: 20px;
+}
+
+.Contant {
+	display: $InlineFlex;
+	width: $S100;
+}
+
+.FormDetails {
+	flex: none;
+	width: 550px;
+}
+
+.Preview {
+	flex: none;
+	width: calc(100% - 550px);
+	border-radius: 5px;
+	display: $InlineFlex;
+	justify-content: $Center;
+	padding: 20px 0px 20px 20px;
+	height: fit-content;
+}
+
+.Box {
+	padding: 20px;
+	border: 1px solid #eeeeee;
+	border-radius: 5px;
+}
+
+.Row {
+	width: $S100;
+	display: inline-grid;
+}
+
+.RowGroup2 {
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+
+.RowGroup3 {
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 20px;
+}
+
+
+.AnimRadio {
+	display: none;
+
+	&:checked {
+		+ {
+			.AnimIcon {
+				border: 1px solid #00ADB5;
+				background-color: #00ADB5;
+			}
+		}
+	}
+}
+
+.AnimLabel {
+	display: $InlineFlex;
+	align-items: $Center;
+	width: $S100;
+	font-size: 14px;
+	font-weight: 500;
+	color: #111;
+	cursor: $Pointer;
+}
+
+.AnimIcon {
+	width: 15px;
+	height: 15px;
+	padding: 2px;
+	display: block;
+	border: 1px solid #393E46;
+	border-radius: 100%;
+	margin-right: 10px;
+	background-size: contain;
+	background-color: #222831;
+	position: $Relative;
+}
+
+.Legend {
+	font-size: 16px;
+	font-weight: 500;
+	color: #222831;
+	margin: 0 15px;
+	position: $Absolute;
+	background: #ffffff;
+	left: 0px;
+	top: 19px;
+	z-index: 1;
+	transition: .2s ease all;
+}
+
+.Fieldset {
+	padding: 0;
+	margin: 10px 0;
+	width: $S100;
+	position: $Relative;
+	border: none;
+
+}
+
+.FormGroup {
+	width: $S100;
+	height: $S100;
+	display: $InlineFlex;
+}
+
+.FormControl {
+	width: $S100;
+	padding: 0 15px;
+	border: none;
+	background: transparent;
+	resize: none;
+	position: $Relative;
+	height: 60px;
+	border-radius: 5px;
+	border: 1px solid #999;
+	background: #fff;
+
+	&.Textarea {
+		height: 100px;
+		padding: 15px;
+	}
+
+	&:focus {
+		~ {
+			.Legend {
+				top: -8px;
+				font-size: 11px;
+				font-weight: 400;
+				color: #717171;
+			}
+		}
+	}
+
+	&:valid {
+		~ {
+			.Legend {
+				top: -8px;
+				font-size: 11px;
+				font-weight: 400;
+				color: #717171;
+			}
+		}
+	}
+}
+
+
+select.FormControl {
+	background-image: url(https://akam.cdn.jdmagicbox.com/images/icontent/newwap/cssupport/angle_down_black.svg);
+	background-position: calc($S100 - 10px) $Center;
+	background-repeat: no-repeat;
+}
+
+
+.Button {
+	display: $InlineFlex;
+	align-items: $Center;
+	justify-content: $Center;
+	cursor: $Pointer;
+	height: 40px;
+	border-radius: 5px;
+	padding: 0 10px;
+	margin-right: 10px;
+	min-width: 150px;
+}
+
+
+
+
+
+
+.PreviewLogo {
+	display: $InlineFlex;;
+	align-items: $FlexStart;
+	.PreviewLogoImage{
+		object-fit: contain;
+	}
+}
+.MobilePreview {
+	border-radius: 5px;
+	border: 1px solid #eee;
+	background: #ffffff;
+	padding: 20px;
+}
+.WhiteRow {
+	display: $InlineFlex;;
+	align-items: $FlexStart;
+	width: $S100;
+}
+.LabelItem {
+	flex: 1 1 150px;
+	text-align: left;
+}
+.LabelText {
+	flex: 1 1 calc(100% - 100px);
+	text-align: left;
+}
+.TableContainer {
+	.Table {
+		display: $InlineFlex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		width: $S100;
+		border: 1px solid #EEE;
+		border-bottom: 1px solid #0000;
+	}
+	.TableHead {
+		position: sticky;
+		position: -webkit-sticky;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		display: $InlineFlex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		width: $S100;
+		-webkit-overflow-scrolling: touch;
+		tr {
+			width: $S100;
+			display: $InlineFlex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			background: #edf2f3;
+			border-bottom: 1px solid #EEE;
+			margin-bottom: 1px;
+			text-align: left;
+			th {
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				padding: 0 10px;
+				font-size: 10px;
+				font-weight: 500;
+				color: #111;
+				height: 35px;
+				line-height: 35px;
+				flex: 1;
+			}
+		}
+	}
+	.TableBody {
+		display: $InlineFlex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		width: $S100;
+		tr {
+			width: $S100;
+			display: $InlineFlex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			background: #fff;
+			border-bottom: 1px solid #EEE;
+			margin-bottom: 1px;
+			td {
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				padding: 0 10px;
+				font-size: 12px;
+				font-weight: 500;
+				color: #111;
+				height: 35px;
+				line-height: 35px;
+				flex: 1;
+			}
+		}
+	}
+}
+.SquareList {
+	display: inline-grid;
+	width: $S100;
+	grid-template-columns: repeat(6, calc(16.6% - 8px));
+	grid-gap: 10px;
+}
+.SquareBox {
+	width: $S100;
+	display: $InlineFlex;;
+	align-items: $Center;
+	justify-content: $FlexStart;
+	text-align: $Center;
+	flex-direction: column;
+	border-radius: 5px;
+	padding: 15px 10px;
+	background: #e40000;
+	color: #ffffff;
+
+}
+.SquareLable {
+	min-height: 50px;
+	line-height: 1.25;
+}
+.AngelBox {
+	border-radius: 5px;
+	background: #e40000;
+	color: #ffffff;
+}
+
+
+.Airtel {
+	.SquareBox {
+		background: #e40000;
+		color: #ffffff;
+	}
+	.AngelBox {
+		background: #e40000;
+		color: #ffffff;
+	}
+	.Note {
+		color: #e40000;
+	}
+	.AngelBox2{
+		color: #e40000;
+	}
+}
+.Jio {
+	.SquareBox {
+		background: #0f3cc9;
+		color: #ffffff;
+	}
+	.AngelBox {
+		background: #0f3cc9;
+		color: #ffffff;
+	}
+	.Note {
+		color: #ee2737;
+	}
+	.AngelBox2{
+		color: #ee2737;
+	}
+}
+.Vi {
+	.SquareBox {
+		background: #ffd133;
+		color: #111;
+	}
+	.AngelBox {
+		background: #ee2737;
+		color: #ffffff;
+	}
+	.Note {
+		color: #ee2737;
+	}
+	.AngelBox2{
+		color: #ee2737;
+	}
+}

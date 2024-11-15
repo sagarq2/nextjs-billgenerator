@@ -1,0 +1,205 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$SpaceBetween : space-between;
+$Column : column;
+
+.RentPage {
+	padding: 20px;
+}
+
+.Contant {
+	display: $InlineFlex;
+	width: $S100;
+}
+
+.FormDetails {
+	flex: none;
+	width: 550px;
+}
+
+.Preview {
+	flex: none;
+	margin-left: 20px;
+	width: calc(100% - 550px);
+	border-radius: 5px;
+	display: $InlineFlex;
+	justify-content: $Center;
+	padding: 20px;
+	height: fit-content;
+}
+
+.Box {
+	padding: 20px;
+	border: 1px solid #eeeeee;
+	border-radius: 5px;
+}
+
+.Row {
+	width: $S100;
+	display: inline-grid;
+}
+
+.RowGroup2 {
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+
+.RowGroup3 {
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 20px;
+}
+
+
+.AnimRadio {
+	display: none;
+
+	&:checked {
+		+ {
+			.AnimIcon {
+				background-image: url(https://akam.cdn.jdmagicbox.com/images/icontent/newwap/jdservice/checkbox-active.svg);
+			}
+		}
+	}
+}
+
+.AnimLabel {
+	display: $InlineFlex;
+	align-items: $Center;
+	width: $S100;
+	font-size: 14px;
+	font-weight: 500;
+	color: #111;
+	cursor: $Pointer;
+}
+
+.AnimIcon {
+	width: 15px;
+	height: 15px;
+	display: block;
+	background-image: url(https://akam.cdn.jdmagicbox.com/images/icontent/newwap/jdservice/checkbox.svg);
+	margin-right: 10px;
+	background-size: contain;
+}
+
+.Legend {
+	font-size: 16px;
+	font-weight: 500;
+	color: #222831;
+	margin: 0 15px;
+	position: $Absolute;
+	background: #ffffff;
+	left: 0px;
+	top: 19px;
+	z-index: 1;
+	transition: .2s ease all;
+}
+
+.Fieldset {
+	padding: 0;
+	margin: 10px 0;
+	width: $S100;
+	position: $Relative;
+	border: none;
+
+}
+
+.FormGroup {
+	width: $S100;
+	height: $S100;
+	display: $InlineFlex;
+}
+
+.FormControl {
+	width: $S100;
+	padding: 0 15px;
+	border: none;
+	background: transparent;
+	resize: none;
+	position: $Relative;
+	height: 60px;
+	border-radius: 5px;
+	border: 1px solid #999;
+	background: #fff;
+
+	&.Textarea {
+		height: 100px;
+		padding: 15px;
+	}
+
+	&:focus {
+		~ {
+			.Legend {
+				top: -8px;
+				font-size: 11px;
+				font-weight: 400;
+				color: #717171;
+			}
+		}
+	}
+
+	&:valid {
+		~ {
+			.Legend {
+				top: -8px;
+				font-size: 11px;
+				font-weight: 400;
+				color: #717171;
+			}
+		}
+	}
+}
+
+
+select.FormControl {
+	background-image: url(https://akam.cdn.jdmagicbox.com/images/icontent/newwap/cssupport/angle_down_black.svg);
+	background-position: calc($S100 - 10px) $Center;
+	background-repeat: no-repeat;
+}
+
+
+.Button {
+	display: $InlineFlex;
+	align-items: $Center;
+	justify-content: $Center;
+	cursor: $Pointer;
+	height: 40px;
+	border-radius: 5px;
+	padding: 0 10px;
+	margin-right: 10px;
+	min-width: 150px;
+}
+
+.RentPreview {
+	border-radius: 5px;
+	border: 1px solid #eee;
+	background: #ffffff;
+	padding: 20px;
+	width: $S100;
+}
+
+.RentText {
+	border-bottom: 1px dashed #cfcfcf;
+	line-height: 1.25;
+}
+
+.WhiteRow {
+	display: $InlineFlex;
+	align-items: $FlexStart;
+	width: $S100;
+}
+
+.LabelItem {
+	flex: 1 1 150px;
+	text-align: left;
+}
+
+.LabelText {
+	flex: 1 1 calc($S100 - 100px);
+	text-align: left;
+}

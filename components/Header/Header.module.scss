@@ -1,0 +1,221 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$SpaceBetween : space-between;
+$Column : column;
+
+.Header {
+    display: $InlineFlex;
+    width: $S100;
+    align-items: $Center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    z-index:5;
+    height: 60px;
+    border-bottom: 1px solid #eeeeee;
+}
+.Left {
+    display: $InlineFlex;
+    .Logo {
+        display: $InlineFlex;
+    }
+}
+
+.Right {
+	flex: 1;
+	display: $InlineFlex;
+	align-items: $Center;
+	justify-content: $FlexEnd;
+}
+
+
+.Navigation{
+    display: $InlineFlex;
+    width: $S100;
+    .NavList{
+        display: $InlineFlex;
+        align-items: $Center;
+        justify-content: $FlexEnd;
+        width: $S100;
+
+        .NavItem{
+            display: $InlineFlex;
+            align-items: $Center;
+            margin-left: 10px;
+            position: $Relative;
+            .NavItemAnchor{
+                padding:0 10px;
+                min-height: 30px;
+                border-radius: 4px;
+                display: $InlineFlex;
+                align-items: $Center;
+                border: solid 1px #0000;
+                transition: 0.3s all;
+                .NavIcon{
+                    font-size: 20px;
+                }
+                &.NavItemActive{
+                    background-color: #e9f5fe;
+                    border: solid 1px #00ADB5;
+                    transition: 0.3s all;
+                    .NavIcon{
+                        color: #00ADB5; 
+                    }
+                    span{
+                        color: #00ADB5; 
+                    }
+                }
+            }
+            .NavDropDown{
+                position: $Absolute;
+                width:$S100;
+                min-width: 580px;
+                top: 45px;
+                right: -290px;
+                display: $InlineFlex;
+                background: #ffffff;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 0 8px 0 rgba(0, 0, 0, .25);
+                display: none;
+                &:before {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-top: 7px solid #0000;
+                    border-left: 7px solid #0000;
+                    border-right: 7px solid #0000;
+                    position: absolute;
+                    top: -16px;
+                    left: calc(50% - 28px);
+                    z-index: 2;
+                    border-bottom: 10px solid #ebebeb;
+                }
+                &:after {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-top: 7px solid #0000;
+                    border-left: 7px solid #0000;
+                    border-right: 7px solid #0000;
+                    position: absolute;
+                    top: -14px;
+                    left: calc(50% - 28px);
+                    z-index: 2;
+                    border-bottom: 10px solid #fff;
+                }
+                .NavDropList{
+                    width:$S100;
+                    display: inline-grid;
+                    grid-template-columns: repeat(4, calc(25% - 8px));
+                    grid-gap:10px;
+                    padding: 5px;
+                    .NavDropItem{
+                        display: $InlineFlex;
+                    }
+                    .NavDropItemAnchor{
+                        padding:0 0 0 5px;
+                        min-height: 30px;
+                        border-radius: 2px;
+                        display: $InlineFlex;
+                        align-items: $Center;
+                        width: $S100;
+                        .NavDropIcon{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.Userbox {
+    display: $InlineFlex;
+	align-items: $Center;
+    position: $Relative;
+    .Userbox__Button {
+        display: $InlineFlex;
+        align-items: $Center;
+        width: 40px;
+        height: 40px;
+        justify-content: $Center;
+        position: $Relative;
+        cursor: $Pointer;
+    }
+    .Userbox__Image {
+        width: $S100;
+        height: $S100;
+        object-fit: contain;
+    }
+    .Userbox_Dropdown {
+        position: $Absolute;
+        right: 0px;
+        top: 52px;
+        width: 250px;
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+        border: solid 1px #f4f4f4;
+        background-color: #FFF;
+        border-radius: 10px;
+        padding: 10px;
+        &:before {
+            position: $Absolute;
+            content: "";
+            top: -10px;
+            width: 0;
+            height: 0;
+            border-left: 7px solid #0000;
+            border-right: 7px solid #0000;
+            border-bottom: 10px solid #FFF;
+            right: 12px;
+            z-index: 2;
+        }
+        &:after {
+            position: $Absolute;
+            content: "";
+            top: -12px;
+            width: 0;
+            height: 0;
+            border-left: 7px solid #0000;
+            border-right: 7px solid #0000;
+            border-bottom: 10px solid #f4f4f4;
+            right: 12px;
+            z-index: 1;
+        }
+        
+    }
+    .Userbox__Details {
+        border-bottom: 1px solid #f4f4f4;
+        padding: 7px 10px 12px;
+        border-radius: 4px;
+        cursor: $Pointer;
+    }
+    .Userbox__Text {
+        line-height: 1.25;
+    }
+    .Userbox__Actions {
+        padding: 5px 0 0;
+    }
+    .Userbox__Row {
+        display: $InlineFlex;
+        align-items: $Center;
+        width: $S100;
+        padding: 8px 10px;
+        border-radius: 4px;
+        .UserBoxIcon{
+            font-size: 20px;
+        }
+    }
+}
+
+
+
