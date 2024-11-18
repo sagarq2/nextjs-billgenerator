@@ -73,7 +73,7 @@ const Header = () => {
                                                 <span className={`font14 fw400 color222`}>Rent Receipt</span>
                                             </a>
                                         </li>
-                                        <li className={`${style.NavDropItem}`}>
+                                        {/* <li className={`${style.NavDropItem}`}>
                                             <a className={`${style.NavDropItemAnchor} whitefill_animate`}>
                                                 <span className={`${style.NavDropIcon} icon color222 material-symbols-outlined mr-4`}>library_books</span>
                                                 <span className={`font14 fw400 color222`}>Book Invoice</span>
@@ -144,7 +144,7 @@ const Header = () => {
                                                 <span className={`${style.NavDropIcon} icon color222 material-symbols-outlined mr-4`}>health_metrics</span>
                                                 <span className={`font14 fw400 color222`}>Gym Bill</span>
                                             </a>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
                             </li>

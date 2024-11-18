@@ -90,7 +90,7 @@ const BillsTabs = ({router}) => {
                         <span className={`${style.TabTxt} font16 fw400 color222`}>Rent Receipt</span>
                     </Link>
                 </li>
-                <li selected={isTabDriver} className={isTabDriver ? `${style.TabItem} ${style.Active}` : `${style.TabItem}`}>
+                {/* <li selected={isTabDriver} className={isTabDriver ? `${style.TabItem} ${style.Active}` : `${style.TabItem}`}>
                     <Link className={`${style.TabItemAnchor} whitefill_animate`} href={{ query: { tab: "5" } }}>
                         <span className={`${style.TabIcon} icon color222 material-symbols-outlined mr-4`}>payments</span>
                         <span className={`${style.TabTxt} font16 fw400 color222`}>Driver Salary</span>
@@ -161,10 +161,10 @@ const BillsTabs = ({router}) => {
                         <span className={`${style.TabIcon} icon color222 material-symbols-outlined mr-4`}>health_metrics</span>
                         <span className={`${style.TabTxt} font16 fw400 color222`}>Gym Bill</span>
                     </Link>
-                </li>
+                </li> */}
             </ul>
 
-            <div className={`${style.TabPrevNext} ${style.TabNext}`} onClick={() => {handleHorizantalScroll(elementRef.current, 0, 100, 120);}} disabled={arrowRightDisable}></div>
+            {/* <div className={`${style.TabPrevNext} ${style.TabNext}`} onClick={() => {handleHorizantalScroll(elementRef.current, 0, 100, 120);}} disabled={arrowRightDisable}></div> */}
 
         </section>
     );

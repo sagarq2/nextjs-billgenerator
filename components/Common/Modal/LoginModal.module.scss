@@ -120,5 +120,10 @@ $ColorFFF:#FFFFFF;
     height: 45px;
     border-radius: 25px;
     width: 250px;
+    &[disabled] {
+      background: #cccccc;
+      cursor: not-allowed;
+      border-color: #cccccc;
+    }
   }
 }
