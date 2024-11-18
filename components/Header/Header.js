@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link';
 import style from "./Header.module.scss";
+import LoginModal from "../Common/Modal/LoginModal";
 
 const Header = () => {
     const pathname = usePathname();
     const router = useRouter();
     const [showLogin, setShowLogin] = useState(false)
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
 
     return (
         <>
@@ -152,7 +155,7 @@ const Header = () => {
                                 </a>
                             </li> */}
                             <li className={`${style.NavItem}`} >
-                                <a className={`${style.NavItemAnchor} whitefill_animate`} >
+                                <a className={`${style.NavItemAnchor} whitefill_animate`} onClick={()=> setShowLoginModal(!showLoginModal)}>
                                     <span className={`${style.NavIcon} icon color222 material-symbols-outlined mr-4`}>login</span>
                                     <span className={`font14 fw400 color222`}>Login</span>
                                 </a>
@@ -190,7 +193,8 @@ const Header = () => {
 
                 </div>
             </header>
-
+            
+            {showLoginModal && <LoginModal setShowLoginModal={setShowLoginModal} showLoginModal={showLoginModal} />}
         </>
     );
 };

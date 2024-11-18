@@ -1,0 +1,124 @@
+$S100: 100%;
+$Absolute: absolute;
+$Relative: relative;
+$Pointer: pointer;
+$InlineFlex: inline-flex;
+$Center: center;
+$FlexEnd: flex-end;
+$FlexStart: flex-start;
+$Column : column;
+$SpaceBetween : space-between;
+$ColorEEE:#EEEEEE;
+$ColorFFF:#FFFFFF;
+
+
+.Modal{
+	will-change: scroll-position, contents, transform, opacity, top, left;
+	line-height: 1.25;
+	.Content{
+		width: min($S100, 1140px);
+		will-change: scroll-position, contents, transform, opacity, top, left;
+		overflow: hidden;
+    position: $Relative;
+		.HeadClose{
+			will-change: scroll-position, contents, transform, opacity, top, left;
+			opacity: 0.7;
+			position: $Absolute;
+			top: 13px;
+			right: 10px;
+		}
+		.ModalBody{
+			max-height: 82vh;
+			overflow-y: auto;
+      display: grid;
+			&::-webkit-scrollbar {
+				width: 4px;
+			}
+			&::-webkit-scrollbar-track {
+					background: rgba(0, 0, 0, 0.09);
+					border-radius: 12px;
+			}
+			&::-webkit-scrollbar-thumb {
+					background: rgba(0, 0, 0, 0.2);
+					cursor: pointer;
+					border-radius: 12px;
+					&:hover {
+							background: rgba(0, 0, 0, 0.2);
+							border-radius: 12px;
+					}
+			}
+		}
+	}
+}
+
+
+.Form{
+  display: $InlineFlex;
+  width: $S100;
+}
+.FormLeft{
+  width: 570px;
+  flex: none;
+  position: $Relative;
+  display: $InlineFlex;
+  flex-direction: $Column;
+  align-items: $Center;
+  .FormImage{
+    background-image:url(https://static.vecteezy.com/system/resources/previews/011/432/528/large_2x/enter-login-and-password-registration-page-on-screen-sign-in-to-your-account-creative-metaphor-login-page-mobile-app-with-user-page-flat-illustration-vector.jpg);
+    width: 570px;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .FormText{
+    display: $InlineFlex;
+    flex-direction: $Column;
+    align-items: $Center;
+  }
+  .Button{
+    color:#00ADB5;
+    border: 1px solid #00ADB5;
+    display: $InlineFlex;
+    align-items: $Center;
+    justify-content: $Center;
+    cursor: $Pointer;
+    height: 45px;
+    border-radius: 25px;
+    width: 150px;
+    background: #FFFFFF;
+    // position: $Absolute;
+    // bottom: 10px;
+    // left: calc(50% - 75px);
+  }
+}
+.FormRight{
+  width: 570px;
+  flex: none;
+  background: #eeeeee;
+  padding: 50px;
+  display: $InlineFlex;
+  flex-direction: $Column;
+  .Input{
+    height: 45px;
+    width: $S100;
+    border-radius: 25px;
+    border: 1px solid $ColorFFF;
+    background: $ColorFFF;
+    padding: 0 10px;
+  }
+  .Error{
+    color: #ee2737;
+  }
+  .Button{
+    background:#00ADB5;
+    border: 1px solid #00ADB5;
+    display: $InlineFlex;
+    align-items: $Center;
+    justify-content: $Center;
+    cursor: $Pointer;
+    height: 45px;
+    border-radius: 25px;
+    width: 250px;
+  }
+}
