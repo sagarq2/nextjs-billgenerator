@@ -49,7 +49,6 @@ const Fuel = () => {
 
     };
 
-
     const elementRef = useRef(null);
     const htmlToImageConvert = () => {
         toJpeg(elementRef.current, { cacheBust: false })
@@ -65,13 +64,67 @@ const Fuel = () => {
     };
 
 
+    const [errors, setErrors] = useState({});
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newErrors = validateForm(fuelInsertForm);
+        setErrors(newErrors);
+        
+        if(Object.keys(newErrors).length === 0) {
+            console.log('Form submitted successfully!');
+            htmlToImageConvert();
+        } else {
+            console.log("Form submission failed due to validation errors.")
+        }
+
+    }
+    const validateForm = (data) => {
+        const errors = {};
+
+        if(!data.fuelStationName.trim()) {
+            errors.fuelStationName = 'Fuel station name is required';
+        }
+        if(!data.fuelStationAddress.trim()) {
+            errors.fuelStationAddress = 'Fuel station address is required';
+        }
+        if(!data.fuelRate.trim()) {
+            errors.fuelRate = 'Fuel rate is required';
+        }
+        if(!data.fuelTotalAmount.trim()) {
+            errors.fuelTotalAmount = 'Fuel Total Amount is required';
+        }
+        if(!data.fuelBillDate.trim()) {
+            errors.fuelBillDate = 'Fuel bill date is required';
+        }
+        if(!data.fuelBillTime.trim()) {
+            errors.fuelBillTime = 'Fuel bill time is required';
+        }
+        if(!data.customerName.trim()) {
+            errors.customerName = 'customer name is required';
+        }
+        if(!data.vehicleNumber.trim()) {
+            errors.vehicleNumber = 'vehicle number is required';
+        }
+        if(!data.vehicleType.trim()) {
+            errors.vehicleType = 'vehicle type is required';
+        }
+        if(!data.paymentMethod.trim()) {
+            errors.paymentMethod = 'payment method is required';
+        }
+        if(!data.invoiceNumber.trim()) {
+            errors.invoiceNumber = 'invoice number is required';
+        }
+        return errors;
+    }
+
+
     return (
         <section className={`${style.FuelPage}`}>
             <h1 className={`font26 fw700 color222`}>Fuel Bill</h1>
 
 
             <div className={`${style.Contant}`}>
-                <div className={`${style.FormDetails}`}>
+                <div className={`${style.FormDetails}`} onSubmit={handleSubmit}>
 
                     <div className={`${style.Box} mt-20`}>
                         <div className={`font16 fw500 color222 mb-15`}>Fuel Station</div>
@@ -124,6 +177,7 @@ const Fuel = () => {
                                     name="fuelStationName"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Fuel Station Name</legend>
+                                {errors.fuelStationName && (<div className={`${style.Error} font14 fw400`} >{errors.fuelStationName}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row}`}>
@@ -136,6 +190,7 @@ const Fuel = () => {
                                     name="fuelStationAddress"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Fuel Station Address</legend>
+                                {errors.fuelStationAddress && (<div className={`${style.Error} font14 fw400`} >{errors.fuelStationAddress}</div>)}
                             </fieldset>
                         </div>
                     </div>
@@ -153,7 +208,7 @@ const Fuel = () => {
                                     name="fuelRate"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Fuel Rate</legend>
-
+                                {errors.fuelRate && (<div className={`${style.Error} font14 fw400`} >{errors.fuelRate}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -165,6 +220,7 @@ const Fuel = () => {
                                     name="fuelTotalAmount"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Total Amount</legend>
+                                {errors.fuelTotalAmount && (<div className={`${style.Error} font14 fw400`} >{errors.fuelTotalAmount}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -178,6 +234,7 @@ const Fuel = () => {
                                     name="fuelBillDate"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Fuel Bill Date</legend>
+                                {errors.fuelBillDate && (<div className={`${style.Error} font14 fw400`} >{errors.fuelBillDate}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -189,6 +246,7 @@ const Fuel = () => {
                                     name="fuelBillTime"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Fuel Bill Time</legend>
+                                 {errors.fuelBillTime && (<div className={`${style.Error} font14 fw400`} >{errors.fuelBillTime}</div>)}
                             </fieldset>
                         </div>
                     </div>
@@ -207,6 +265,7 @@ const Fuel = () => {
 
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Customer Name</legend>
+                                 {errors.customerName && (<div className={`${style.Error} font14 fw400`} >{errors.customerName}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -221,6 +280,8 @@ const Fuel = () => {
                                     name="vehicleNumber"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Vehicle Number</legend>
+                                {errors.vehicleNumber && (<div className={`${style.Error} font14 fw400`} >{errors.vehicleNumber}</div>)}
+
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <select
@@ -237,6 +298,7 @@ const Fuel = () => {
                                     <option value="Electric">Electric</option>
                                 </select>
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Vehicle Type</legend>
+                                {errors.vehicleType && (<div className={`${style.Error} font14 fw400`} >{errors.vehicleType}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -254,6 +316,7 @@ const Fuel = () => {
                                     <option value="Card">Card</option>
                                 </select>
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Payment Method</legend>
+                                {errors.paymentMethod && (<div className={`${style.Error} font14 fw400`} >{errors.paymentMethod}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -266,16 +329,33 @@ const Fuel = () => {
                                     name="invoiceNumber"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Invoice Number</legend>
+                                {errors.invoiceNumber && (<div className={`${style.Error} font14 fw400`} >{errors.invoiceNumber}</div>)}
                             </fieldset>
                         </div>
                     </div>
                     <div className={`mt-20`}>
-                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} onClick={htmlToImageConvert}> Generate</button>
+                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} 
+                            disabled={
+                                !(
+                                fuelInsertForm.fuelStationName &&
+                                fuelInsertForm.fuelStationAddress &&
+                                fuelInsertForm.fuelRate &&
+                                fuelInsertForm.fuelTotalAmount &&
+                                fuelInsertForm.fuelBillDate && 
+                                fuelInsertForm.fuelBillTime && 
+                                fuelInsertForm.customerName && 
+                                fuelInsertForm.vehicleNumber && 
+                                fuelInsertForm.vehicleType && 
+                                fuelInsertForm.paymentMethod && 
+                                fuelInsertForm.invoiceNumber
+                            )
+                        }
+                            onClick={handleSubmit}
+                            > Generate
+                        </button>
                         <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`}>Clear</button>
                     </div>
                 </div>
-
-
 
 
 
@@ -346,13 +426,7 @@ const Fuel = () => {
                         </div>
                     </div>
                 </div>
-            </div >
-
-
-
-
-
-
+            </div>
 
 
         </section >

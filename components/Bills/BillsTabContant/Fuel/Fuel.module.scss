@@ -9,6 +9,10 @@ $FlexStart: flex-start;
 $SpaceBetween : space-between;
 $Column : column;
 
+.Error{
+    color: #ee2737;
+}
+
 .FuelPage {
 	padding: 20px;
 }
@@ -177,6 +181,11 @@ select.FormControl {
 	padding: 0 10px;
 	margin-right: 10px;
 	min-width: 150px;
+	&[disabled] {
+		background: #cccccc;
+		cursor: not-allowed;
+		border-color: #cccccc;
+	}
 }
 
 

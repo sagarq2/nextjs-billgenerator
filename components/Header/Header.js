@@ -165,7 +165,7 @@ const Header = () => {
 
 
 
-                    <div className={`${style.Userbox} ml-20 `}>
+                    {/* <div className={`${style.Userbox} ml-20 `}>
                         <div className={`${style.Userbox__Button}`} onClick={() => setShowLogin(!showLogin)}>
                             <img className={`${style.Userbox__Image}`} src="https://akam.cdn.jdmagicbox.com/images/icontent/newwap/cssupport/user_circle.svg" />
                         </div>
@@ -188,7 +188,7 @@ const Header = () => {
                                 </div>
                             </div>
                             : null}
-                    </div>
+                    </div> */}
 
 
                 </div>
