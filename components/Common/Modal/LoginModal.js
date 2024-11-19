@@ -10,9 +10,9 @@ const LoginModal = (props) => {
     const [errors, setErrors] = useState({});
     const [isFormValid, setIsFormValid] = useState(false);
 
-    useEffect(() => {
-        validateForm();
-    }, [name, email, password]);
+    // useEffect(() => {
+    //     validateForm();
+    // }, [name, email, password]);
     const validateForm = () => {
         let errors = {};
 
@@ -35,6 +35,7 @@ const LoginModal = (props) => {
         setIsFormValid(Object.keys(errors).length === 0);
     };
     const handleSubmit = () => {
+        validateForm();
         if (isFormValid) {
             console.log('Form submitted successfully!');
         } else {
@@ -65,7 +66,9 @@ const LoginModal = (props) => {
                                 className={`${style.Input} font16 fw400 color222 mt-20`}
                                 placeholder="Name"
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                }}
                             />
                             {errors.name ? <div className={`${style.Error} font14 fw400`} >{errors.name}</div> : null}
                             <input
@@ -79,13 +82,16 @@ const LoginModal = (props) => {
                                 className={`${style.Input} font16 fw400 color222 mt-20`}
                                 placeholder="Password"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e) => {
+                                    setErrors({...errors, password: ''});
+                                    setPassword(e.target.value || '')
+                                }}
                                 type="password"
                             />
                             {errors.password ? <div className={`${style.Error} font14 fw400`} >{errors.password}</div> : null}
                             <button
                                 className={`${style.Button} font18 fw500 colorFFF mt-20 mb-25`}
-                                disabled={!isFormValid}
+                                disabled={!(email && password && name)}
                                 onClick={handleSubmit}
                             >
                                 Submit
