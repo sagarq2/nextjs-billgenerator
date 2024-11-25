@@ -38,6 +38,11 @@ const Fuel = () => {
         })
     };
 
+    const handleClear = () => {
+        setFuelInsertForm(" ");
+    }
+
+    
     const handleRadioChange = (event) => {
         const { name } = event?.target;
         setFuelInsertForm({
@@ -62,6 +67,7 @@ const Fuel = () => {
             console.log(err);
           });
     };
+    
 
 
     const [errors, setErrors] = useState({});
@@ -78,6 +84,8 @@ const Fuel = () => {
         }
 
     }
+
+   
     const validateForm = (data) => {
         const errors = {};
 
@@ -353,7 +361,7 @@ const Fuel = () => {
                             onClick={handleSubmit}
                             > Generate
                         </button>
-                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`}>Clear</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>
 

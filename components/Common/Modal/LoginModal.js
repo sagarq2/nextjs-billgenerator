@@ -46,6 +46,7 @@ const LoginModal = (props) => {
 
 
 
+
   const modalContent = (
         <section className={`modal  ${style.Modal} `}>
             <div className={`${style.Content} modal_content fadeInUpTop `}>
