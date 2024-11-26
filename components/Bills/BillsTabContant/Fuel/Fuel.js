@@ -39,7 +39,21 @@ const Fuel = () => {
     };
 
     const handleClear = () => {
-        setFuelInsertForm(" ");
+        setFuelInsertForm({
+            selectedLogo: '',
+            selectedLogoURL: "",
+            fuelStationName: '',
+            fuelStationAddress: '',
+            fuelRate: '',
+            fuelTotalAmount: '',
+            fuelBillDate: '',
+            fuelBillTime: '',
+            customerName: '',
+            vehicleNumber: '',
+            vehicleType: '',
+            paymentMethod: '',
+            invoiceNumber: ''
+        });
     }
 
     
@@ -361,7 +375,7 @@ const Fuel = () => {
                             onClick={handleSubmit}
                             > Generate
                         </button>
-                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`}  onClick={handleClear}>Clear</button>
                     </div>
                 </div>
 
