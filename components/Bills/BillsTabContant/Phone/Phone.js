@@ -73,7 +73,80 @@ const Phone = () => {
           });
     };
 
+    const [Error, setErrors] = useState({});
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newErrors = validateForm(fuelInsertForm);
+        setErrors(newErrors);
 
+        if(Object.keys(newErrors).length === 0) {
+            console.log('Form submitted successfully!');
+            htmlToImageConvert();
+        } else {
+            console.log("Form submission failed due to validation errors.")
+        }
+    }
+    
+
+   
+    const validateForm = (data) => {
+        const errors = {};
+
+        if(!data.fuelStationName.trim()) {
+            errors.fuelStationName = 'Fuel station name is required';
+        }
+        if(!data.fuelStationAddress.trim()) {
+            errors.fuelStationAddress = 'Fuel station address is required';
+        }
+        if(!data.fuelRate.trim()) {
+            errors.fuelRate = 'Fuel rate is required';
+        }
+        if(!data.fuelTotalAmount.trim()) {
+            errors.fuelTotalAmount = 'Fuel Total Amount is required';
+        }
+        if(!data.fuelBillDate.trim()) {
+            errors.fuelBillDate = 'Fuel bill date is required';
+        }
+        if(!data.fuelBillTime.trim()) {
+            errors.fuelBillTime = 'Fuel bill time is required';
+        }
+        if(!data.customerName.trim()) {
+            errors.customerName = 'customer name is required';
+        }
+        if(!data.vehicleNumber.trim()) {
+            errors.vehicleNumber = 'vehicle number is required';
+        }
+        if(!data.vehicleType.trim()) {
+            errors.vehicleType = 'vehicle type is required';
+        }
+        if(!data.paymentMethod.trim()) {
+            errors.paymentMethod = 'payment method is required';
+        }
+        if(!data.invoiceNumber.trim()) {
+            errors.invoiceNumber = 'invoice number is required';
+        }
+        return errors;
+    }
+
+
+
+    const handleClear = () => {
+        setFuelInsertForm({
+            selectedLogo: '',
+            selectedLogoURL: "",
+            fuelStationName: '',
+            fuelStationAddress: '',
+            fuelRate: '',
+            fuelTotalAmount: '',
+            fuelBillDate: '',
+            fuelBillTime: '',
+            customerName: '',
+            vehicleNumber: '',
+            vehicleType: '',
+            paymentMethod: '',
+            invoiceNumber: ''
+        });
+    }
 
 
     return (
@@ -400,8 +473,8 @@ const Phone = () => {
                     </div>
 
                     <div className={`mt-20`}>
-                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} onClick={htmlToImageConvert}> Generate</button>
-                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`}>Clear</button>
+                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} onClick={handleSubmit}> Generate</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>
 
