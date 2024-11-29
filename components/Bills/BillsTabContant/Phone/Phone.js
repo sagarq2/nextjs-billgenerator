@@ -76,7 +76,7 @@ const Phone = () => {
     const [Error, setErrors] = useState({});
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newErrors = validateForm(fuelInsertForm);
+        const newErrors = validateForm(phoneInsertForm);
         setErrors(newErrors);
 
         if(Object.keys(newErrors).length === 0) {
@@ -92,38 +92,62 @@ const Phone = () => {
     const validateForm = (data) => {
         const errors = {};
 
-        if(!data.fuelStationName.trim()) {
-            errors.fuelStationName = 'Fuel station name is required';
+        if(!data.providerName.trim()) {
+            errors.providerName = 'Fuel station name is required';
         }
-        if(!data.fuelStationAddress.trim()) {
-            errors.fuelStationAddress = 'Fuel station address is required';
+        if(!data.providerAddress.trim()) {
+            errors.providerAddress = 'Fuel station address is required';
         }
-        if(!data.fuelRate.trim()) {
-            errors.fuelRate = 'Fuel rate is required';
+        if(!data.invoiceNumber.trim()) {
+            errors.invoiceNumber = 'Fuel rate is required';
         }
-        if(!data.fuelTotalAmount.trim()) {
-            errors.fuelTotalAmount = 'Fuel Total Amount is required';
+        if(!data.invoiceDate.trim()) {
+            errors.invoiceDate = 'Fuel Total Amount is required';
         }
-        if(!data.fuelBillDate.trim()) {
-            errors.fuelBillDate = 'Fuel bill date is required';
+        if(!data.invoiceFromDate.trim()) {
+            errors.invoiceFromDate = 'Fuel bill date is required';
         }
-        if(!data.fuelBillTime.trim()) {
-            errors.fuelBillTime = 'Fuel bill time is required';
+        if(!data.invoiceToDate.trim()) {
+            errors.invoiceToDate = 'Fuel bill time is required';
         }
-        if(!data.customerName.trim()) {
-            errors.customerName = 'customer name is required';
+        if(!data.invoiceService.trim()) {
+            errors.invoiceService = 'customer name is required';
         }
-        if(!data.vehicleNumber.trim()) {
-            errors.vehicleNumber = 'vehicle number is required';
-        }
-        if(!data.vehicleType.trim()) {
-            errors.vehicleType = 'vehicle type is required';
+        if(!data.invoiceBillingCycle.trim()) {
+            errors.invoiceBillingCycle = 'vehicle number is required';
         }
         if(!data.paymentMethod.trim()) {
             errors.paymentMethod = 'payment method is required';
         }
-        if(!data.invoiceNumber.trim()) {
-            errors.invoiceNumber = 'invoice number is required';
+        if(!data.paymentIn.trim()) {
+            errors.paymentIn = 'invoice number is required';
+        }
+        if(!data.paymentAmount.trim()) {
+            errors.paymentAmount = 'invoice number is required';
+        }
+        if(!data.paymentTax.trim()) {
+            errors.paymentTax = 'invoice number is required';
+        }
+        if(!data.customerAccount.trim()) {
+            errors.customerAccount = 'invoice number is required';
+        }
+        if(!data.customerName.trim()) {
+            errors.customerName = 'invoice number is required';
+        }
+        if(!data.customerAddress.trim()) {
+            errors.customerAddress = 'invoice number is required';
+        }
+        if(!data.customerNumber.trim()) {
+            errors.customerNumber = 'invoice number is required';
+        }
+        if(!data.customerEmail.trim()) {
+            errors.customerEmail = 'invoice number is required';
+        }
+        if(!data.customerPlaceOfSupply.trim()) {
+            errors.customerPlaceOfSupply = 'invoice number is required';
+        }
+        if(!data.customerStateCode.trim()) {
+            errors.customerStateCode = 'invoice number is required';
         }
         return errors;
     }
@@ -131,20 +155,26 @@ const Phone = () => {
 
 
     const handleClear = () => {
-        setFuelInsertForm({
-            selectedLogo: '',
-            selectedLogoURL: "",
-            fuelStationName: '',
-            fuelStationAddress: '',
-            fuelRate: '',
-            fuelTotalAmount: '',
-            fuelBillDate: '',
-            fuelBillTime: '',
-            customerName: '',
-            vehicleNumber: '',
-            vehicleType: '',
+        setPhoneInsertForm({
+            providerName: '',
+            providerAddress: '',
+            invoiceNumber: '',
+            invoiceDate: '',
+            invoiceFromDate: '',
+            invoiceToDate: '',
+            invoiceService: '',
+            invoiceBillingCycle: '',
             paymentMethod: '',
-            invoiceNumber: ''
+            paymentIn: '',
+            paymentAmount: '',
+            paymentTax: '',
+            customerAccount:'',
+            customerName: '',
+            customerAddress: '',
+            customerNumber: '',
+            customerEmail: '',
+            customerPlaceOfSupply: '',
+            customerStateCode: '',
         });
     }
 
@@ -473,7 +503,30 @@ const Phone = () => {
                     </div>
 
                     <div className={`mt-20`}>
-                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} onClick={handleSubmit}> Generate</button>
+                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} 
+                        disabled={
+                            !(
+                            phoneInsertForm.providerName &&
+                            phoneInsertForm.providerAddress &&
+                            phoneInsertForm.invoiceNumber &&
+                            phoneInsertForm.invoiceDate &&
+                            phoneInsertForm.invoiceFromDate &&
+                            phoneInsertForm.invoiceToDate &&
+                            phoneInsertForm.invoiceService &&
+                            phoneInsertForm.invoiceBillingCycle &&
+                            phoneInsertForm.paymentMethod &&
+                            phoneInsertForm.paymentIn &&
+                            phoneInsertForm.paymentAmount &&
+                            phoneInsertForm.paymentTax &&
+                            phoneInsertForm.customerAccount &&
+                            phoneInsertForm.customerName &&
+                            phoneInsertForm.customerAddress &&
+                            phoneInsertForm.customerNumber &&
+                            phoneInsertForm.customerEmail &&
+                            phoneInsertForm.customerPlaceOfSupply &&
+                            phoneInsertForm.customerStateCode
+                        )
+                    } onClick={handleSubmit}> Generate</button>
                         <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>
