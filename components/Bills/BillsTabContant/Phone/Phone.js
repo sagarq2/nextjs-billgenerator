@@ -73,7 +73,7 @@ const Phone = () => {
           });
     };
 
-    const [Error, setErrors] = useState({});
+    const [error, setErrors] = useState({});
     const handleSubmit = (e) => {
         e.preventDefault();
         const newErrors = validateForm(phoneInsertForm);
