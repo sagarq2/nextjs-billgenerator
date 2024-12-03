@@ -1,4 +1,4 @@
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import style from "./Fuel.module.scss";
 import {toJpeg } from 'html-to-image';
 
@@ -13,7 +13,7 @@ const DEFAULT_LOGS = {
 }
 
 const Fuel = () => {
-
+    "use client"
     const [fuelInsertForm, setFuelInsertForm] = useState({
         selectedLogo: 'BharatPetroleum',
         selectedLogoURL: DEFAULT_LOG_SELECTED,
@@ -28,8 +28,15 @@ const Fuel = () => {
         vehicleType: '',
         paymentMethod: '',
         invoiceNumber: ''
-
     });
+
+    useEffect(() => {
+        setFuelInsertForm({
+            ...fuelInsertForm,
+            invoiceNumber: Math.floor(Math.random() * 100000) + 1
+        })
+    }, [])
+
     const handleInputChange = (event) => {
         const { value, name } = event?.target;
         setFuelInsertForm({
@@ -52,7 +59,8 @@ const Fuel = () => {
             vehicleNumber: '',
             vehicleType: '',
             paymentMethod: '',
-            invoiceNumber: ''
+            invoiceNumber: Math.floor(Math.random() * 100000) + 1
+
         });
     }
 
@@ -138,6 +146,9 @@ const Fuel = () => {
         }
         return errors;
     }
+
+    // let volumeNumber = (fuelTotalAmount) / (fuelRate)
+    // let volumeNumberFixed = volumeNumber.toFixed(2).toLowerCase();
 
 
     return (
@@ -399,7 +410,9 @@ const Fuel = () => {
                         </div>
                         <div className={`${style.PreviewReceipt}`} >
                             <div className={`${style.ReceiptRow}`} >
-                                Receipt Number : {fuelInsertForm.invoiceNumber}
+                                Receipt Number : 
+                                {fuelInsertForm.invoiceNumber}
+
                             </div>
                         </div>
                         <div className={`${style.PreviewReceipt}`} >
@@ -415,7 +428,7 @@ const Fuel = () => {
                                 {fuelInsertForm.fuelTotalAmount}
                             </div>
                             <div className={`${style.ReceiptRow}`} >
-                                Volume :  LTR
+                                Volume : {(fuelInsertForm.fuelTotalAmount / fuelInsertForm.fuelRate).toFixed(2).toLowerCase()} LTR
                             </div>
                         </div>
                         <div className={`${style.PreviewReceipt}`} >

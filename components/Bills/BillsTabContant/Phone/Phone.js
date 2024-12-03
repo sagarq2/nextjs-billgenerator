@@ -19,7 +19,7 @@ const Phone = () => {
         selectedLogoURL: DEFAULT_LOG_SELECTED,
         providerName: '',
         providerAddress: '',
-        invoiceNumber: '',
+        invoiceNumber: Math.floor(Math.random() * 100000000) + 1,
         invoiceDate: '',
         invoiceFromDate: '',
         invoiceToDate: '',
@@ -35,7 +35,7 @@ const Phone = () => {
         customerNumber: '',
         customerEmail: '',
         customerPlaceOfSupply: '',
-        customerStateCode: '',
+        // customerStateCode: '',
 
     });
     const handleInputChange = (event) => {
@@ -52,7 +52,7 @@ const Phone = () => {
         setPhoneInsertForm({
             providerName: '',
             providerAddress: '',
-            invoiceNumber: '',
+            invoiceNumber: Math.floor(Math.random() * 100000000) + 1,
             invoiceDate: '',
             invoiceFromDate: '',
             invoiceToDate: '',
@@ -68,7 +68,7 @@ const Phone = () => {
             customerNumber: '',
             customerEmail: '',
             customerPlaceOfSupply: '',
-            customerStateCode: '',
+            // customerStateCode: '',
         });
     }
 
@@ -100,21 +100,8 @@ const Phone = () => {
     };
 
     const [errors, setErrors] = useState({});
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newErrors = validateForm(phoneInsertForm);
-        setErrors(newErrors);
 
-        if(Object.keys(newErrors).length === 0) {
-            console.log('Form submitted successfully!');
-            htmlToImageConvert();
-        } else {
-            console.log("Form submission failed due to validation errors.")
-        }
-    }
-    
 
-   
     const validateForm = (data) => {
         const errors = {};
 
@@ -172,14 +159,24 @@ const Phone = () => {
         if(!data.customerPlaceOfSupply.trim()) {
             errors.customerPlaceOfSupply = 'invoice number is required';
         }
-        if(!data.customerStateCode.trim()) {
-            errors.customerStateCode = 'invoice number is required';
-        }
+        // if(!data.customerStateCode.trim()) {
+        //     errors.customerStateCode = 'invoice number is required';
+        // }
         return errors;
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newErrors = validateForm(phoneInsertForm);
+        setErrors(newErrors);
 
-
+        if(Object.keys(newErrors).length === 0) {
+            console.log('Form submitted successfully!');
+            htmlToImageConvert();
+        } else {
+            console.log("Form submission failed due to validation errors.")
+        }
+    }
 
     return (
         <section className={`${style.PhonePage}  `}>
@@ -493,7 +490,7 @@ const Phone = () => {
                                 {errors.customerEmail && (<div className={`${style.Error} font14 fw400`} >{errors.customerEmail}</div>)}
                             </fieldset>
                         </div>
-                        <div className={`${style.Row} ${style.RowGroup2}`}>
+                        <div className={`${style.Row}`}>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
                                     className={`${style.FormControl} font16 fw500 color222`}
@@ -507,7 +504,7 @@ const Phone = () => {
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Place of Supply</legend>
                                 {errors.customerPlaceOfSupply && (<div className={`${style.Error} font14 fw400`} >{errors.customerPlaceOfSupply}</div>)}
                             </fieldset>
-                            <fieldset className={`${style.Fieldset}`}>
+                            {/* <fieldset className={`${style.Fieldset}`}>
                                 <input
                                     className={`${style.FormControl} font16 fw500 color222`}
                                     type="text"
@@ -519,7 +516,7 @@ const Phone = () => {
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>State Code</legend>
                                 {errors.customerStateCode && (<div className={`${style.Error} font14 fw400`} >{errors.customerStateCode}</div>)}
-                            </fieldset>
+                            </fieldset> */}
                         </div>
                     </div>
 
@@ -544,8 +541,8 @@ const Phone = () => {
                             phoneInsertForm.customerAddress &&
                             phoneInsertForm.customerNumber &&
                             phoneInsertForm.customerEmail &&
-                            phoneInsertForm.customerPlaceOfSupply &&
-                            phoneInsertForm.customerStateCode
+                            phoneInsertForm.customerPlaceOfSupply 
+                            // phoneInsertForm.customerStateCode
                         )
                     } onClick={handleSubmit}> Generate</button>
                         <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
@@ -602,7 +599,7 @@ const Phone = () => {
                             <div className={``}>
                             <div className={`${style.WhiteRow}`}>
                                 <label className={`${style.LabelItem} font11 fw500 color111`} >Invoice Number</label>
-                                <div className={`${style.LabelText} font11 fw700 color111`} >: MHI{phoneInsertForm.invoiceNumber} </div>
+                                <div className={`${style.LabelText} font11 fw700 color111`} >: MHI {phoneInsertForm.invoiceNumber} </div>
                             </div>
                             <div className={`${style.WhiteRow}`}>
                                 <label className={`${style.LabelItem} font11 fw500 color111`} >Invoice Date</label>
@@ -620,10 +617,10 @@ const Phone = () => {
                                 <label className={`${style.LabelItem} font11 fw500 color111`} >Place of Supply</label>
                                 <div className={`${style.LabelText} font11 fw500 color111`} >: {phoneInsertForm.customerPlaceOfSupply}</div>
                             </div>
-                            <div className={`${style.WhiteRow}`}>
+                            {/* <div className={`${style.WhiteRow}`}>
                                 <label className={`${style.LabelItem} font11 fw500 color111`} >State Code</label>
                                 <div className={`${style.LabelText} font11 fw500 color111`} >: {phoneInsertForm.customerStateCode} </div>
-                            </div>
+                            </div> */}
                             <div className={`${style.WhiteRow}`}>
                                 <label className={`${style.LabelItem} font11 fw500 color111`} >Payment by</label>
                                 <div className={`${style.LabelText} font11 fw700 color111`} >: {phoneInsertForm.paymentIn}</div>
@@ -656,7 +653,7 @@ const Phone = () => {
                             </div>
                             <div className={`${style.SquareBox}`}>
                                 <label className={`${style.SquareLable} font11 fw500`} >Amount After Due Date</label>
-                                <div className={`font14 fw600`}><span className={`${style.rupicon}`}>₹</span> {phoneInsertForm.paymentAmount} </div>
+                                <div className={`font14 fw600`}><span className={`${style.rupicon}`}>₹</span> {+(phoneInsertForm.paymentAmount) + 50} </div>
                             </div>
                             <div className={`${style.SquareBox}`}>
                                 <label className={`${style.SquareLable} font11 fw500`} >Payment Method</label>
@@ -670,7 +667,7 @@ const Phone = () => {
                             <div className={`${style.AngelBox} p-20`}>
                                 <div className={`${style.WhiteRow} mb-10`}>
                                 <label className={`${style.LabelItem} font11 fw500`} >Monthly Charges</label>
-                                <div className={`${style.LabelText} font11 fw500`} >: <span className={`${style.rupicon}`}>₹</span> {phoneInsertForm.paymentAmount} </div>
+                                <div className={`${style.LabelText} font11 fw500`} >: <span className={`${style.rupicon}`}>₹</span> {(phoneInsertForm.paymentAmount) - ((phoneInsertForm.paymentAmount) * (phoneInsertForm.paymentTax / 100))} </div>
                                 </div>
                                 <div className={`${style.WhiteRow} mb-10`}>
                                 <label className={`${style.LabelItem} font11 fw500`} >Tax</label>
@@ -678,7 +675,7 @@ const Phone = () => {
                                 </div>
                                 <div className={`${style.WhiteRow} mb-10`}>
                                 <label className={`${style.LabelItem} font11 fw500`} >Taxable Amount</label>
-                                <div className={`${style.LabelText} font11 fw500`} >: <span className={`${style.rupicon}`}>₹</span> <span >82.57</span></div>
+                                <div className={`${style.LabelText} font11 fw500`} >: <span className={`${style.rupicon}`}>₹</span> {(phoneInsertForm.paymentAmount) * (phoneInsertForm.paymentTax / 100)}</div>
                                 </div>
                                 <div className={`${style.WhiteRow} mb-10`}>
                                 <label className={`${style.LabelItem} font11 fw500`} >Bill Cycle</label>
@@ -690,7 +687,7 @@ const Phone = () => {
                                 </div>
                                 <div className={`${style.WhiteRow} mb-10`}>
                                 <label className={`${style.LabelItem} font11 fw500`} >Total Amount</label>
-                                <div className={`${style.LabelText} font11 fw500`} >: <span className={`${style.rupicon}`}>₹</span>  <span >1000</span> </div>
+                                <div className={`${style.LabelText} font11 fw500`} >: <span className={`${style.rupicon}`}>₹</span>  {phoneInsertForm.paymentAmount} </div>
                                 </div>
                             </div>
                             <div className={`${style.AngelBox2} text_center pl-50 pr-50 pt-25`}>

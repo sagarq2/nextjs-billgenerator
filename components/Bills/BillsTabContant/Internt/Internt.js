@@ -32,7 +32,7 @@ const Internt = () => {
         tarrifPlan: '',
         paymentMethod: '',
         totalAmount: '',
-        invoiceNo: '',
+        invoiceNo: Math.floor(Math.random() * 100000) + 1,
 
     });
     const handleInputChange = (event) => {
@@ -42,6 +42,28 @@ const Internt = () => {
             [name]: value
         })
     };
+
+    const handleClear = () => {
+        setInternetInsertForm({
+            providerName: '',
+            providerAddress: '',
+            acountNumber: '',
+            billingDate: '',
+            billingFrom: '',
+            billingTo: '',
+            customerName: '',
+            customerAddress: '',
+            customerEmail: '',
+            customerMobile: '',
+            planSpeed: '',
+            tarrifPlanPackage: '',
+            tarrifPlan: '',
+            paymentMethod: '',
+            totalAmount: '',
+            invoiceNo: Math.floor(Math.random() * 100000) + 1,
+
+        })
+    }
 
     const handleRadioChange = (event) => {
         const { name } = event?.target;
@@ -53,8 +75,6 @@ const Internt = () => {
         });
 
     };
-
-
     const elementRef = useRef(null);
     const htmlToImageConvert = () => {
         toJpeg(elementRef.current, { cacheBust: false })
@@ -68,6 +88,64 @@ const Internt = () => {
             console.log(err);
           });
     };
+    const [errors, setErrors] = useState({});
+    const validateForm = (data) => {
+        const errors = {};
+        if(!data.providerName.trim()) {
+            errors.providerName = 'Provider name is required';
+        }
+        if(!data.providerAddress.trim()) {
+            errors.providerAddress = 'Provider address is required';
+        }
+        if(!data.acountNumber.trim()) {
+            errors.acountNumber = 'Acount number is required';
+        }
+        if(!data.billingDate.trim()) {
+            errors.billingDate = 'Billing date is required';
+        }
+        if(!data.billingFrom.trim()) {
+            errors.billingFrom = 'Billing form is required';
+        }
+        if(!data.billingTo.trim()) {
+            errors.billingTo = 'Billing to is required';
+        }
+        if(!data.customerName.trim()) {
+            errors.customerName = 'Customer name is required';
+        }
+        if(!data.customerAddress.trim()) {
+            errors.customerAddress = 'Customer address is required';
+        }
+        if(!data.customerEmail.trim()) {
+            errors.customerEmail = 'Customer email is required';
+        }
+        if(!data.customerMobile.trim()) {
+            errors.customerMobile = 'Customer mobile is required';
+        }
+        if(!data.planSpeed.trim()) {
+            errors.planSpeed = 'Plan speed is required';
+        }
+        if(!data.tarrifPlanPackage.trim()) {
+            errors.tarrifPlanPackage = 'Tarrif plan package is required';
+        }
+        if(!data.tarrifPlan.trim()) {
+            errors.tarrifPlan = 'Tarrif plan is required';
+        }
+        if(!data.paymentMethod.trim()) {
+            errors.paymentMethod = 'Payment method is required';
+        }
+        if(!data.totalAmount.trim()) {
+            errors.totalAmount = 'Total amount is required';
+        }
+        if(!data.invoiceNo.trim()) {
+            errors.invoiceNo = 'Invoice no is required';
+        }
+        return errors;
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newErrors = validateForm(internetInsertForm);
+    }
+
 
     return (
         <section className={`${style.InterntPage}`}>
@@ -198,9 +276,8 @@ const Internt = () => {
 
                         <div className={`${style.Row}`}>
                             <fieldset className={`${style.Fieldset}`}>
-                                <input
-                                    className={`${style.FormControl} font16 fw500 color222`}
-                                    type="text"
+                                <textarea
+                                    className={`${style.FormControl} ${style.Textarea} font16 fw500 color222`}
                                     required
                                     onChange={(e) => handleInputChange(e)}
                                     value={internetInsertForm.customerAddress}
@@ -334,8 +411,29 @@ const Internt = () => {
                         </div>
                     </div>
                     <div className={`mt-20`}>
-                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} onClick={htmlToImageConvert}> Generate</button>
-                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`}>Clear</button>
+                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} 
+                            disabled={
+                                !(
+                                internetInsertForm.providerName &&
+                                internetInsertForm.providerAddress &&
+                                internetInsertForm.acountNumber &&
+                                internetInsertForm.billingDate &&
+                                internetInsertForm.billingFrom &&
+                                internetInsertForm.billingTo &&
+                                internetInsertForm.customerName &&
+                                internetInsertForm.customerAddress &&
+                                internetInsertForm.customerEmail &&
+                                internetInsertForm.customerMobile &&
+                                internetInsertForm.planSpeed &&
+                                internetInsertForm.tarrifPlanPackage &&
+                                internetInsertForm.tarrifPlan &&
+                                internetInsertForm.paymentMethod &&
+                                internetInsertForm.totalAmount &&
+                                internetInsertForm.invoiceNo
+                            )
+                            } onClick={handleSubmit}
+                        > Generate</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>
 
@@ -387,7 +485,7 @@ const Internt = () => {
                                 </div>
                                 <div className={`${style.WhiteRow}`}>
                                     <span className={`${style.LabelItem} font11 fw500 color222`}>Broadband Plan:</span>
-                                    <span className={`${style.LabelText} font11 fw500 color222`}>: {internetInsertForm.tarrifPlan}Family Plan</span>
+                                    <span className={`${style.LabelText} font11 fw500 color222`}>: {internetInsertForm.tarrifPlanPackage}  Family Plan</span>
                                 </div>
                             </div>
                             <div className={`${style.WhiteBox}`}>
@@ -397,7 +495,7 @@ const Internt = () => {
                                 </div>
                                 <div className={`${style.WhiteRow}`}>
                                     <span className={`${style.LabelItem} font11 fw500 color222`}>Invoice Cycle:</span>
-                                    <span className={`${style.LabelText} font11 fw500 color222`}>: </span>
+                                    <span className={`${style.LabelText} font11 fw500 color222`}>: {internetInsertForm.tarrifPlan}</span>
                                 </div>
                                 <div className={`${style.WhiteRow}`}>
                                     <span className={`${style.LabelItem} font11 fw500 color222`}>Invoice Period:</span>
@@ -452,28 +550,28 @@ const Internt = () => {
                                     </thead>
                                     <tbody className={`${style.TableBody}`}>
                                         <tr>
-                                        <td> <span id="printInternetSpeed" /> <span id="printInternetPackage" /> <small className={`font11 fw400 color777`}>Subscription Charges</small></td>
-                                        <td> </td>
-                                        <td> </td>
-                                        <td><span className={`${style.RupIcon}`}>₹</span> <span id="printInternetNetCharges" /></td>
+                                            <td> {internetInsertForm.planSpeed} {internetInsertForm.tarrifPlanPackage} <small className={`font11 fw400 color777`}>Subscription Charges</small></td>
+                                            <td> </td>
+                                            <td> </td>
+                                            <td><span className={`${style.RupIcon}`}>₹</span> {internetInsertForm.totalAmount - (internetInsertForm.totalAmount) * (18 / 100)}</td>
                                         </tr>
                                         <tr>
-                                        <td>CGST(9%) </td>
-                                        <td />
-                                        <td />
-                                        <td> <span className={`${style.RupIcon}`}>₹</span> <span id="printInternetCGST" /> </td>
+                                            <td>CGST(9%) </td>
+                                            <td />
+                                            <td />
+                                            <td> <span className={`${style.RupIcon}`}>₹</span> {(internetInsertForm.totalAmount) * (9 / 100)} </td>
                                         </tr>
                                         <tr>
-                                        <td>SGST(9%) </td>
-                                        <td />
-                                        <td />
-                                        <td> <span className={`${style.RupIcon}`}>₹</span> <span id="printInternetSGST" /> </td>
+                                            <td>SGST(9%) </td>
+                                            <td />
+                                            <td />
+                                            <td> <span className={`${style.RupIcon}`}>₹</span> {(internetInsertForm.totalAmount) * (9 / 100)} </td>
                                         </tr>
                                         <tr>
-                                        <td><span className={`fw700`}>Total</span></td>
-                                        <td />
-                                        <td />
-                                        <td> <span className={`fw700`}><span className={`${style.RupIcon}`}>₹</span> <span id="printInternetTotal" /></span></td>
+                                            <td><span className={`fw700`}>Total</span></td>
+                                            <td />
+                                            <td />
+                                            <td> <span className={`fw700`}><span className={`${style.RupIcon}`}>₹</span> {internetInsertForm.totalAmount}</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
