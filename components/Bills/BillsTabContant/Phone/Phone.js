@@ -46,6 +46,32 @@ const Phone = () => {
         })
     };
 
+
+
+    const handleClear = () => {
+        setPhoneInsertForm({
+            providerName: '',
+            providerAddress: '',
+            invoiceNumber: '',
+            invoiceDate: '',
+            invoiceFromDate: '',
+            invoiceToDate: '',
+            invoiceService: '',
+            invoiceBillingCycle: '',
+            paymentMethod: '',
+            paymentIn: '',
+            paymentAmount: '',
+            paymentTax: '',
+            customerAccount:'',
+            customerName: '',
+            customerAddress: '',
+            customerNumber: '',
+            customerEmail: '',
+            customerPlaceOfSupply: '',
+            customerStateCode: '',
+        });
+    }
+
     const handleRadioChange = (event) => {
         const { name } = event?.target;
         setPhoneInsertForm({
@@ -73,7 +99,7 @@ const Phone = () => {
           });
     };
 
-    const [error, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
     const handleSubmit = (e) => {
         e.preventDefault();
         const newErrors = validateForm(phoneInsertForm);
@@ -154,30 +180,6 @@ const Phone = () => {
 
 
 
-    const handleClear = () => {
-        setPhoneInsertForm({
-            providerName: '',
-            providerAddress: '',
-            invoiceNumber: '',
-            invoiceDate: '',
-            invoiceFromDate: '',
-            invoiceToDate: '',
-            invoiceService: '',
-            invoiceBillingCycle: '',
-            paymentMethod: '',
-            paymentIn: '',
-            paymentAmount: '',
-            paymentTax: '',
-            customerAccount:'',
-            customerName: '',
-            customerAddress: '',
-            customerNumber: '',
-            customerEmail: '',
-            customerPlaceOfSupply: '',
-            customerStateCode: '',
-        });
-    }
-
 
     return (
         <section className={`${style.PhonePage}  `}>
@@ -242,6 +244,7 @@ const Phone = () => {
                                     name="providerName"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Provider Name</legend>
+                                {errors.providerName && (<div className={`${style.Error} font14 fw400`} >{errors.providerName}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row}`}>
@@ -254,6 +257,7 @@ const Phone = () => {
                                     name="providerAddress"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Provider Address</legend>
+                                {errors.providerAddress && (<div className={`${style.Error} font14 fw400`} >{errors.providerAddress}</div>)}
                             </fieldset>
                         </div>
                     </div>
@@ -271,7 +275,7 @@ const Phone = () => {
                                     name="invoiceNumber"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Invoice No</legend>
-
+                                {errors.invoiceNumber && (<div className={`${style.Error} font14 fw400`} >{errors.invoiceNumber}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -283,6 +287,7 @@ const Phone = () => {
                                     name="invoiceDate"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Invoice Date</legend>
+                                {errors.invoiceDate && (<div className={`${style.Error} font14 fw400`} >{errors.invoiceDate}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -296,6 +301,7 @@ const Phone = () => {
                                     name="invoiceFromDate"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>From Date</legend>
+                                {errors.invoiceFromDate && (<div className={`${style.Error} font14 fw400`} >{errors.invoiceFromDate}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -307,6 +313,7 @@ const Phone = () => {
                                     name="invoiceToDate"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>To Date</legend>
+                                {errors.invoiceToDate && (<div className={`${style.Error} font14 fw400`} >{errors.invoiceToDate}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -323,6 +330,7 @@ const Phone = () => {
                                     <option value="Postpaid">Postpaid</option>
                                 </select>
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Service</legend>
+                                {errors.invoiceService && (<div className={`${style.Error} font14 fw400`} >{errors.invoiceService}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <select
@@ -339,6 +347,7 @@ const Phone = () => {
                                     <option value="Annual">Annual</option>
                                 </select>
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Billing Cycle</legend>
+                                {errors.invoiceBillingCycle && (<div className={`${style.Error} font14 fw400`} >{errors.invoiceBillingCycle}</div>)}
                             </fieldset>
                         </div>
                     </div>
@@ -361,6 +370,7 @@ const Phone = () => {
                                     <option value="UPI">UPI</option>
                                 </select>
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Payment Method</legend>
+                                {errors.paymentMethod && (<div className={`${style.Error} font14 fw400`} >{errors.paymentMethod}</div>)}
 
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
@@ -376,6 +386,7 @@ const Phone = () => {
                                     <option value="Immediate">Immediate</option>
                                 </select>
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Payment In</legend>
+                                {errors.paymentIn && (<div className={`${style.Error} font14 fw400`} >{errors.paymentIn}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -389,6 +400,7 @@ const Phone = () => {
                                     name="paymentAmount"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Amount</legend>
+                                {errors.paymentAmount && (<div className={`${style.Error} font14 fw400`} >{errors.paymentAmount}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -400,6 +412,7 @@ const Phone = () => {
                                     name="paymentTax"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Tax %</legend>
+                                {errors.paymentTax && (<div className={`${style.Error} font14 fw400`} >{errors.paymentTax}</div>)}
                             </fieldset>
                         </div>
                     </div>
@@ -421,6 +434,7 @@ const Phone = () => {
 
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Account Number</legend>
+                                {errors.customerAccount && (<div className={`${style.Error} font14 fw400`} >{errors.customerAccount}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -434,6 +448,8 @@ const Phone = () => {
 
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Customer Name</legend>
+                                {errors.customerName && (<div className={`${style.Error} font14 fw400`} >{errors.customerName}</div>)}
+
                             </fieldset>
                         </div>
                         <div className={`${style.Row}`}>
@@ -446,6 +462,7 @@ const Phone = () => {
                                     name="customerAddress"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Customer Address</legend>
+                                {errors.customerAddress && (<div className={`${style.Error} font14 fw400`} >{errors.customerAddress}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -460,6 +477,7 @@ const Phone = () => {
                                     name="customerNumber"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Mobile No</legend>
+                                {errors.customerNumber && (<div className={`${style.Error} font14 fw400`} >{errors.customerNumber}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -472,6 +490,7 @@ const Phone = () => {
                                     name="customerEmail"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Email ID</legend>
+                                {errors.customerEmail && (<div className={`${style.Error} font14 fw400`} >{errors.customerEmail}</div>)}
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -486,6 +505,7 @@ const Phone = () => {
                                     name="customerPlaceOfSupply"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Place of Supply</legend>
+                                {errors.customerPlaceOfSupply && (<div className={`${style.Error} font14 fw400`} >{errors.customerPlaceOfSupply}</div>)}
                             </fieldset>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
@@ -498,6 +518,7 @@ const Phone = () => {
                                     name="customerStateCode"
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>State Code</legend>
+                                {errors.customerStateCode && (<div className={`${style.Error} font14 fw400`} >{errors.customerStateCode}</div>)}
                             </fieldset>
                         </div>
                     </div>
