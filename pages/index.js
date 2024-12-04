@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <section className="holder">
             <Header tabIndex="0" />
-            <main tabIndex="0" className="main">
+            <main tabIndex="0" className="main p-20">
                 <HomeBanner />
                 <HomeBio />
                 <HomeWhy />
