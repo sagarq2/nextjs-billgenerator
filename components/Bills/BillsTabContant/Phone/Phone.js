@@ -111,9 +111,9 @@ const Phone = () => {
         if(!data.providerAddress.trim()) {
             errors.providerAddress = 'Fuel station address is required';
         }
-        if(!data.invoiceNumber.trim()) {
-            errors.invoiceNumber = 'Fuel rate is required';
-        }
+        // if(!data.invoiceNumber.trim()) {
+        //     errors.invoiceNumber = 'Fuel rate is required';
+        // }
         if(!data.invoiceDate.trim()) {
             errors.invoiceDate = 'Fuel Total Amount is required';
         }

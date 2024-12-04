@@ -136,9 +136,9 @@ const Internt = () => {
         if(!data.totalAmount.trim()) {
             errors.totalAmount = 'Total amount is required';
         }
-        if(!data.invoiceNo.trim()) {
-            errors.invoiceNo = 'Invoice no is required';
-        }
+        // if(!data.invoiceNo.trim()) {
+        //     errors.invoiceNo = 'Invoice no is required';
+        // }
         return errors;
     }
     const handleSubmit = (e) => {
