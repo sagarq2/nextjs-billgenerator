@@ -141,14 +141,9 @@ const Fuel = () => {
         if(!data.paymentMethod.trim()) {
             errors.paymentMethod = 'payment method is required';
         }
-        // if(!data.invoiceNumber.trim()) {
-        //     errors.invoiceNumber = 'invoice number is required';
-        // }
         return errors;
     }
 
-    // let volumeNumber = (fuelTotalAmount) / (fuelRate)
-    // let volumeNumberFixed = volumeNumber.toFixed(2).toLowerCase();
 
 
     return (

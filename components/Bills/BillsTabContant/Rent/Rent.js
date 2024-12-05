@@ -16,6 +16,20 @@ const Rent = () => {
         toMonth: '',
 
     });
+
+    const handleClear = () => {
+        setRentInsertForm({
+            employeeName: '',
+            rentHouseAddress: '',
+            landlordName: '',
+            landlordPancard: '',
+            recipetDate: '',
+            rentAmount: '',
+            fromMonth: '',
+            toMonth: '',
+
+        });
+    }
     const handleInputChange = (event) => {
         const { value, name } = event?.target;
         setRentInsertForm({
@@ -37,6 +51,52 @@ const Rent = () => {
             console.log(err);
           });
     };
+
+    const [errors, setErrors] = useState({});
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newErrors = validateForm(rentInsertForm);
+        setErrors(newErrors);
+        
+        if(Object.keys(newErrors).length === 0) {
+            console.log('Form submitted successfully!');
+            htmlToImageConvert();
+        } else {
+            console.log("Form submission failed due to validation errors.")
+        }
+
+    }
+
+   
+    const validateForm = (data) => {
+        const errors = {};
+
+        if(!data.employeeName.trim()) {
+            errors.employeeName = 'Employee name is required';
+        }
+        if(!data.rentHouseAddress.trim()) {
+            errors.rentHouseAddress = 'Rent house address is required';
+        }
+        if(!data.landlordName.trim()) {
+            errors.landlordName = 'Landlord name is required';
+        }
+        if(!data.landlordPancard.trim()) {
+            errors.landlordPancard = 'Landlord pancard is required';
+        }
+        if(!data.recipetDate.trim()) {
+            errors.recipetDate = 'Recipet date is required';
+        }
+        if(!data.rentAmount.trim()) {
+            errors.rentAmount = 'Rent amount is required';
+        }
+        if(!data.fromMonth.trim()) {
+            errors.fromMonth = 'From month is required';
+        }
+        if(!data.toMonth.trim()) {
+            errors.toMonth = 'To month is required';
+        }
+        return errors;
+    }
 
     return (
         <section className={`${style.RentPage}`}>
@@ -187,8 +247,22 @@ const Rent = () => {
                         </div>
                     </div>
                     <div className={`mt-20`}>
-                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} onClick={htmlToImageConvert}> Generate</button>
-                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`}>Clear</button>
+                        <button className={`${style.Button} bluefill_animate font15 fw500 colorFFF`} 
+                            disabled={
+                                !(
+                                rentInsertForm.employeeName &&
+                                rentInsertForm.rentHouseAddress &&
+                                rentInsertForm.landlordName &&
+                                rentInsertForm.landlordPancard &&
+                                rentInsertForm.recipetDate && 
+                                rentInsertForm.rentAmount && 
+                                rentInsertForm.fromMonth && 
+                                rentInsertForm.toMonth 
+                            )
+                        }
+                            onClick={handleSubmit}
+                        > Generate</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>
 

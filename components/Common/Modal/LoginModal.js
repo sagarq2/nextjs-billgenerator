@@ -59,7 +59,7 @@ const LoginModal = (props) => {
                             <div className={`${style.FormText}`}>
                                 <div className={`font22 fw700 color222`}>Welcome to Login</div>
                                 <div className={`font16 fw400 color222 mt-5`}>Don't have an account?</div>
-                                <button className={`${style.Button} font18 fw500 mt-15 mb-40`}> Sign Up</button>
+                                <button className={`${style.Button} font18 fw500 mt-15 mb-40`}> Login</button>
                             </div>
                         </div>
                         <div className={`${style.FormRight} `}>
@@ -103,7 +103,7 @@ const LoginModal = (props) => {
                     <div className={`${style.Form}`}>
 
                     <div className={`${style.FormRight} `}>
-                            <div className={`font22 fw700 color222 pt-20`}>Sign Up</div>
+                            <div className={`font22 fw700 color222 pt-20`}>Log In</div>
                             <input
                                 className={`${style.Input} font16 fw400 color222 mt-20`}
                                 placeholder="Name"
