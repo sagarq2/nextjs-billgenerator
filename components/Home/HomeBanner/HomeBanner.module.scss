@@ -20,6 +20,7 @@ $Column : column;
     justify-content: $SpaceBetween;
     padding: 20px;
     background-color: #222831;
+    border-radius: 10px;
     .BannerTxt{
         flex: 1;
         display: $InlineFlex;
@@ -58,5 +59,6 @@ $Column : column;
     }
     .BannerHeading{
         font-family: "Anton", sans-serif;
+        font-size: 40px;
     }
 }

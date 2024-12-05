@@ -52,6 +52,7 @@ const LoginModal = (props) => {
             <div className={`${style.Content} modal_content fadeInUpTop `}>
                 <div className={`${style.ModalBody} modal_body`}>
                     <div onClick={() => props.setShowLoginModal(!props.showLoginModal)} role="button" aria-label='Modal Close Icon' tabIndex={"0"} className={`${style.HeadClose} modal_close icon`}></div>
+
                     <div className={`${style.Form}`}>
                         <div className={`${style.FormLeft}`}>
                             <div className={`${style.FormImage}`} />
@@ -99,6 +100,56 @@ const LoginModal = (props) => {
                             </button>
                         </div>
                     </div>
+                    <div className={`${style.Form}`}>
+
+                    <div className={`${style.FormRight} `}>
+                            <div className={`font22 fw700 color222 pt-20`}>Sign Up</div>
+                            <input
+                                className={`${style.Input} font16 fw400 color222 mt-20`}
+                                placeholder="Name"
+                                value={name}
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                }}
+                            />
+                            {errors.name ? <div className={`${style.Error} font14 fw400`} >{errors.name}</div> : null}
+                            <input
+                                className={`${style.Input} font16 fw400 color222 mt-20`}
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            {errors.email ? <div className={`${style.Error} font14 fw400`} >{errors.email}</div> : null}
+                            <input
+                                className={`${style.Input} font16 fw400 color222 mt-20`}
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => {
+                                    setErrors({...errors, password: ''});
+                                    setPassword(e.target.value || '')
+                                }}
+                                type="password"
+                            />
+                            {errors.password ? <div className={`${style.Error} font14 fw400`} >{errors.password}</div> : null}
+                            <button
+                                className={`${style.Button} font18 fw500 colorFFF mt-20 mb-25`}
+                                disabled={!(email && password && name)}
+                                onClick={handleSubmit}
+                            >
+                                Submit
+                            </button>
+                        </div>
+                        <div className={`${style.FormLeft}`}>
+                            <div className={`${style.FormImage}`} />
+                            <div className={`${style.FormText}`}>
+                                <div className={`font22 fw700 color222`}>Welcome to Login</div>
+                                <div className={`font16 fw400 color222 mt-5`}>Don't have an account?</div>
+                                <button className={`${style.Button} font18 fw500 mt-15 mb-40`}> Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         
