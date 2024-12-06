@@ -400,8 +400,8 @@ const Fuel = () => {
                         </div>
                         <div className={`${style.PreviewAddress}`} >
                             <div >Welcome !!!</div>
-                            {fuelInsertForm.fuelStationName}
-                            {fuelInsertForm.fuelStationAddress}
+                            <div>{fuelInsertForm.fuelStationName}</div>
+                            <div>{fuelInsertForm.fuelStationAddress}</div>
                         </div>
                         <div className={`${style.PreviewReceipt}`} >
                             <div className={`${style.ReceiptRow}`} >
