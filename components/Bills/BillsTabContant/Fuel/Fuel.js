@@ -27,15 +27,15 @@ const Fuel = () => {
         vehicleNumber: '',
         vehicleType: '',
         paymentMethod: '',
-        invoiceNumber: ''
+        invoiceNumber: Math.floor(Math.random() * 100000) + 1
     });
 
-    useEffect(() => {
-        setFuelInsertForm({
-            ...fuelInsertForm,
-            invoiceNumber: Math.floor(Math.random() * 100000) + 1
-        })
-    }, [])
+    // useEffect(() => {
+    //     setFuelInsertForm({
+    //         ...fuelInsertForm,
+    //         invoiceNumber: Math.floor(Math.random() * 100000) + 1
+    //     })
+    // }, [])
 
     const handleInputChange = (event) => {
         const { value, name } = event?.target;
@@ -63,7 +63,14 @@ const Fuel = () => {
 
         });
     }
-
+    const resetButton = () => {
+        setFuelInsertForm({
+            ...fuelInsertForm,
+            fuelBillDate: '',
+            fuelBillTime: '',
+            invoiceNumber: Math.floor(Math.random() * 100000) + 1,
+        })
+    }
     
     const handleRadioChange = (event) => {
         const { name } = event?.target;
@@ -381,7 +388,8 @@ const Fuel = () => {
                             onClick={handleSubmit}
                             > Generate
                         </button>
-                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`}  onClick={handleClear}>Clear</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={resetButton}>Reset</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>
 

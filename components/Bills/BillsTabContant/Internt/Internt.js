@@ -1,7 +1,7 @@
 import React, { useState, useRef} from 'react';
 import style from "./Internt.module.scss";
 import {toJpeg } from 'html-to-image';
-
+import FormSucess from "@/components/Common/Modal/FormSucess/FormSucess"
 
 const DEFAULT_LOG_SELECTED = 'data:image/png;base64,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'
 
@@ -62,6 +62,13 @@ const Internt = () => {
             totalAmount: '',
             invoiceNo: Math.floor(Math.random() * 100000) + 1,
 
+        })
+    }
+
+    const resetButton = () => {
+        setInternetInsertForm({
+            ...internetInsertForm,
+            invoiceNo: Math.floor(Math.random() * 100000) + 1,
         })
     }
 
@@ -141,18 +148,23 @@ const Internt = () => {
         // }
         return errors;
     }
+    const formSucess = () => {
+        {formSucess && <formSucess /> }
+     }
     const handleSubmit = (e) => {
         e.preventDefault();
         const newErrors = validateForm(internetInsertForm);
         setErrors(newErrors);
         
         if(Object.keys(newErrors).length === 0) {
-            console.log('Form submitted successfully!');
+            console.log('Congratulations! Your form submission was successful. You can find your receipt in your downloads folder.');
             htmlToImageConvert();
         } else {
-            console.log("Form submission failed due to validation errors.")
+            console.log("Unfortunately, your form submission was unsuccessful due to some validation errors. Please review the form and correct the errors before resubmitting.")
         }
     }
+
+    
 
 
     return (
@@ -441,6 +453,7 @@ const Internt = () => {
                             )
                             } onClick={handleSubmit}
                         > Generate</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={resetButton}>Reset</button>
                         <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>
@@ -452,11 +465,10 @@ const Internt = () => {
 
                 <div className={`${style.Preview} ${internetInsertForm.selectedLogo === "Hathway" ? style.Hathway : ""} ${internetInsertForm.selectedLogo === "Snet" ? style.Snet: ""}`}>
                     <div className={`${style.InternetPreview}`} ref={elementRef}>
-                        {console.log(internetInsertForm)}
                         <div className={`${style.Row} ${style.RowGroup2}`}>
                             <div className={`${style.PreviewLogo}`}>
                                 <img
-                                    width={100}
+                                    width={100} 
                                     className={`${style.PreviewLogoImage}`}
                                     src={internetInsertForm.selectedLogoURL}
                                 />

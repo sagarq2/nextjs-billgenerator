@@ -72,6 +72,13 @@ const Phone = () => {
         });
     }
 
+    const resetButton = () => {
+        setPhoneInsertForm({
+            ...phoneInsertForm,
+            invoiceNumber: Math.floor(Math.random() * 100000) + 1,
+        })
+    }
+
     const handleRadioChange = (event) => {
         const { name } = event?.target;
         setPhoneInsertForm({
@@ -545,6 +552,7 @@ const Phone = () => {
                             // phoneInsertForm.customerStateCode
                         )
                     } onClick={handleSubmit}> Generate</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={resetButton}>Reset</button>
                         <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>

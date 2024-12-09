@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link';
 import style from "./Header.module.scss";
-import LoginModal from "../Common/Modal/LoginModal";
+import LoginModal from "../Common/Modal/LoginModal/LoginModal";
 
 const Header = () => {
     const pathname = usePathname();
