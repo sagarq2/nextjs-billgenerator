@@ -32,6 +32,14 @@ const Rent = () => {
 
         });
     }
+    const resetButton = () => {
+        setRentInsertForm({
+            ...rentInsertForm,
+            recipetDate: '',
+            fromMonth: '',
+            toMonth: '',
+        })
+    }
     const handleInputChange = (event) => {
         const { value, name } = event?.target;
         setRentInsertForm({
@@ -287,6 +295,7 @@ const Rent = () => {
                         }
                             onClick={handleSubmit}
                         > Generate</button>
+                        <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={resetButton}>Reset</button>
                         <button className={`${style.Button} blue_whitefill_animate font15 fw500 color00A`} onClick={handleClear}>Clear</button>
                     </div>
                 </div>
@@ -320,10 +329,11 @@ const Rent = () => {
                             <div className={`font16 fw400 color333 text_right`}>
                                 <div className={`${style.SignatureBox}`}>
                                     <img
-                                        src="/Revenu.jpg"
-                                        height={75}
-                                        width={75}
+                                        src="/Revenu.png"
+                                        height={80}
+                                        width={80}
                                         alt={'Revenu'}
+                                        className={`${style.Revenu}`}
                                     />
                                     <img className={`${style.Signature}`} src={file} height={55} />
                                     <img className={`${style.Signature}`} src={file} height={55} />
