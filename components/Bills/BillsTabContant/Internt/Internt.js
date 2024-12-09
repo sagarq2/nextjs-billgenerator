@@ -144,6 +144,14 @@ const Internt = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const newErrors = validateForm(internetInsertForm);
+        setErrors(newErrors);
+        
+        if(Object.keys(newErrors).length === 0) {
+            console.log('Form submitted successfully!');
+            htmlToImageConvert();
+        } else {
+            console.log("Form submission failed due to validation errors.")
+        }
     }
 
 
