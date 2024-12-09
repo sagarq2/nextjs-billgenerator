@@ -27,15 +27,15 @@ const Fuel = () => {
         vehicleNumber: '',
         vehicleType: '',
         paymentMethod: '',
-        invoiceNumber: Math.floor(Math.random() * 100000) + 1
+        invoiceNumber: ''
     });
 
-    // useEffect(() => {
-    //     setFuelInsertForm({
-    //         ...fuelInsertForm,
-    //         invoiceNumber: Math.floor(Math.random() * 100000) + 1
-    //     })
-    // }, [])
+    useEffect(() => {
+        setFuelInsertForm({
+            ...fuelInsertForm,
+            invoiceNumber: Math.floor(Math.random() * 100000) + 1
+        })
+    }, [])
 
     const handleInputChange = (event) => {
         const { value, name } = event?.target;

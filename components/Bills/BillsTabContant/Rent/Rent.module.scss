@@ -211,3 +211,14 @@ select.FormControl {
 	flex: 1 1 calc($S100 - 100px);
 	text-align: left;
 }
+
+.SignatureBox{
+	position: $Relative;
+}
+.Signature{
+	position: $Absolute;
+	right: -111px;
+	top: 10px;
+	filter: brightness(0.5);
+	rotate: -14deg;
+}

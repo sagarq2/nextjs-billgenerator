@@ -14,6 +14,7 @@ const Rent = () => {
         rentAmount: '',
         fromMonth: '',
         toMonth: '',
+        signatureImage: ''
 
     });
 
@@ -27,6 +28,7 @@ const Rent = () => {
             rentAmount: '',
             fromMonth: '',
             toMonth: '',
+            signatureImage:''
 
         });
     }
@@ -37,6 +39,11 @@ const Rent = () => {
             [name]: value
         })
     };
+    const [file, setFile] = useState();
+    function handleChange(e) {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    }
 
     const elementRef = useRef(null);
     const htmlToImageConvert = () => {
@@ -95,6 +102,9 @@ const Rent = () => {
         if(!data.toMonth.trim()) {
             errors.toMonth = 'To month is required';
         }
+
+
+        
         return errors;
     }
 
@@ -180,7 +190,7 @@ const Rent = () => {
                     <div className={`${style.Box} mt-20`}>
                         <div className={`font16 fw500 color222 mb-5`}>Rent Details</div>
                         <div className={`font12 fw400 mb-15`} style={{color:'#D0342B'}}>Select quarterly base months(e.g Jan 2024 to March 2024)</div>
-                        <div className={`${style.Row}`}>
+                        <div className={`${style.Row} ${style.RowGroup2}`}>
                             <fieldset className={`${style.Fieldset}`}>
                                 <input
                                     className={`${style.FormControl} font16 fw500 color222`}
@@ -193,6 +203,20 @@ const Rent = () => {
 
                                 />
                                 <legend tabIndex={-1} className={`${style.Legend}`}>Rent Amount</legend>
+                            </fieldset>
+                            <fieldset className={`${style.Fieldset}`}>
+                                <input
+                                    className={`${style.FormControl} font16 fw500 color222`}
+                                    type="file"
+                                    aria-required="true"
+                                    required
+                                    onChange={handleChange}
+                                    value={rentInsertForm.signatureImage}
+                                    name="signatureImage"
+
+                                />
+                                 
+                                <legend tabIndex={-1} className={`${style.Legend}`}>Signature Image</legend>
                             </fieldset>
                         </div>
                         <div className={`${style.Row} ${style.RowGroup2}`}>
@@ -257,6 +281,7 @@ const Rent = () => {
                                 rentInsertForm.recipetDate && 
                                 rentInsertForm.rentAmount && 
                                 rentInsertForm.fromMonth && 
+                                // rentInsertForm.signatureImage && 
                                 rentInsertForm.toMonth 
                             )
                         }
@@ -272,7 +297,6 @@ const Rent = () => {
 
                 <div className={`${style.Preview}`} >
                     <div className={`${style.RentPreview}`} ref={elementRef}>
-                        {console.log(rentInsertForm)}
                         <div className={`pl-40 pr-40 row text_center mt-20 `}>
                             <div className={`font25 fw700 color222`}>Receipt of House Rent</div>
                             <div className={`font14 fw400 color555`}>Under Section 1 (13-A) of Income Tax Act</div>
@@ -294,14 +318,19 @@ const Rent = () => {
                                 Date : <span className={`fw700 color222`}>{rentInsertForm.recipetDate}</span>
                             </div>
                             <div className={`font16 fw400 color333 text_right`}>
-                                <div>
+                                <div className={`${style.SignatureBox}`}>
                                     <img
                                         src="/Revenu.jpg"
                                         height={75}
                                         width={75}
                                         alt={'Revenu'}
                                     />
+                                    <img className={`${style.Signature}`} src={file} height={55} />
+                                    <img className={`${style.Signature}`} src={file} height={55} />
+                                    <img className={`${style.Signature}`} src={file} height={55} />
+                                    <img className={`${style.Signature}`} src={file} height={55} />
                                 </div>
+                                
                                 <div className={`mt-15`}> Signature of House Owner</div>
                             </div>
                         </div>
