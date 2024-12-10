@@ -312,7 +312,7 @@ const Rent = () => {
                         </div>
                         <div className={`pl-40 pr-40 row mt-50`}>
                             <div className={`${style.RentText} font16 fw400 color333 mb-30`}>Recived a sum of Rs. <span className={`font18 fw700 color222 pl-20 pr-20`}> {(rentInsertForm.rentAmount) * 3 } /-</span></div>
-                            <div className={`${style.RentText} font18 fw700 color222 mb-30`}> {(converter.toWords(+rentInsertForm.rentAmount))} rupees only</div>
+                            <div className={`${style.RentText} font18 fw700 color222 mb-30`} style={{textTransform:"capitalize"}}> {(converter.toWords(+rentInsertForm.rentAmount))} rupees only</div>
                             <div className={`${style.RentText} font16 fw400 color333 mb-30`}>from <span className={`font18 fw700 color222 pl-20 pr-20`}>{rentInsertForm.employeeName}</span> towords the rent Rs. <span className={`font18 fw700 color222 pl-10 pr-10`} > {rentInsertForm.rentAmount} /-</span> 
                             </div>
                             <div className={`${style.RentText} font16 fw400 color333 mb-30`}>
